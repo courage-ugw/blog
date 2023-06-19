@@ -1,0 +1,64 @@
+/* CSS styles for the form */
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
+
+    .panel {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 16px;
+      box-sizing: border-box; /* Added property */
+    }
+
+    .form-group textarea {
+      height: 120px;
+    }
+
+    .form-group input[type="submit"] {
+      background-color: #4F4F4F;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .form-group input[type="submit"]:hover {
+      background-color: #635696;
+    }
+
+    @media (max-width: 480px) {
+      .panel {
+        padding: 10px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        font-size: 14px;
+      }
+    }

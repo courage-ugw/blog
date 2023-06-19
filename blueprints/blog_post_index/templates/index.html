@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Flask Blog</title>
+    {% block head %}
+    <link rel="stylesheet"
+          href="{{ url_for('blog_post_index.static', filename='style.css') }}">
+    {% endblock %}
+</head>
+<body>
+    <h1>{% block header %} Welcome to My Flask Blog! {% endblock %} </h1>
+
+    {% block content %}
+    <div class="post">
+
+        <h2>Post Title</h2>
+        <p><em>Written by ...</em></p>
+        <p>
+            Introduction:
+            The United Kingdom, known for its picturesque landscapes and cultural
+            heritage, faces significant environmental challenges due to pollution.
+            Environmental pollution, stemming from various sources, has detrimental
+            effects on the country's ecosystems, public health, and the overall quality
+            of life. In this blog post, we will delve into the key forms of pollution in
+            the UK, their consequences, and explore potential solutions for a cleaner
+            and more sustainable future.
+
+            Air Pollution:
+            Air pollution is a pressing issue that affects both urban and rural
+            areas across the UK. The burning of fossil fuels, industrial emissions,
+            and vehicular exhaust contribute to high levels of particulate matter,
+            nitrogen oxides, and sulfur dioxide. These pollutants not only deteriorate
+            air quality but also pose serious health risks, especially to vulnerable
+            populations such as children and the elderly. Measures like promoting cleaner
+            transportation, transitioning to renewable energy sources,
+        </p>
+        <hr>
+        <a href="blog_post/delete/1" class="rounded-button"><i>delete post</i></a>
+        <a href="blog_post/update/2" class="rounded-button"><i>update post</i></a>
+    </div>
+    {% endblock %}
+<!--    <div class="post">-->
+<!--        <h2>Post Title</h2>-->
+<!--        <p><em>Written by ...</em></p>-->
+<!--        <p>Post content</p>-->
+<!--    </div>-->
+<!--    <div class="post">-->
+<!--        <h2>Post Title</h2>-->
+<!--        <p><em>Written by ...</em></p>-->
+<!--        <p>Post content</p>-->
+<!--    </div>-->
+</body>
+</html>
