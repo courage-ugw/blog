@@ -7,6 +7,8 @@
 
     {% block header %} Create post {% endblock %}
 
+    {% block add_post_button %} {% endblock %}
+
     {% block content %}
     <div class="panel">
     <form action="/blog_post/add" method="POST">
@@ -26,8 +28,9 @@
       </div>
 
       <div class="form-group">
-        <input type="submit" value="Submit">
+        <input type="submit" value="add post">
       </div>
     </form>
   </div>
     {% endblock %}
+    

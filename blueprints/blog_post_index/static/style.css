@@ -4,6 +4,11 @@ body {
     padding: 20px;
     color: #333;
 }
+a {text-decoration: none;}
+
+p:not(:first-child) {
+    text-align: justify;
+}
 
 h1 {
     text-align: center;
@@ -20,10 +25,12 @@ h1 {
 
 .post h2 {
     margin-top: 0;
+    padding: 0 20px;
 }
 
 .post p {
     margin: 10px 0;
+    padding: 0 20px;
 }
 
 .rounded-button {
@@ -39,6 +46,27 @@ h1 {
 .rounded-button:hover {
     background-color: #635696;
 }
+
+
+
+.add-button > a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #635696;
+    border-radius: 5px;
+    color: white;
+    align-self: center
+    font-size: 0.5rem;
+}
+
+.add-button {
+    margin-bottom: 5px;
+}
+
+.add-button > a:hover {
+    background-color: #4F4F4F;
+}
+
 
 @media (max-width: 480px) {
   .rounded-button {

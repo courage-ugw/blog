@@ -7,26 +7,28 @@
 
     {% block header %} Update post {% endblock %}
 
+    {% block add_post_button %} {% endblock %}
+
     {% block content %}
     <div class="panel">
-    <form action="/blog_post/update" method="POST">
+    <form action="{{ url_for('blog_posts.update', post_id=post.id) }}" method="POST">
       <div class="form-group">
         <label for="author">Author:</label>
-        <input type="text" id="author" name="author" required>
+        <input type="text" id="author" name="author" value="{{post.author}}" required>
       </div>
 
       <div class="form-group">
         <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required>
+        <input type="text" id="title" name="title" value="{{ post.title}}" required>
       </div>
 
       <div class="form-group">
         <label for="content">Content:</label>
-        <textarea id="content" name="content" rows="6" required></textarea>
+        <textarea id="content" name="content" rows="6" required>{{ post.content}}</textarea>
       </div>
 
       <div class="form-group">
-        <input type="submit" value="Submit">
+        <input type="submit" value="update">
       </div>
     </form>
   </div>
