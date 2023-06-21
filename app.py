@@ -13,4 +13,4 @@ app.register_blueprint(blog_post_bp, url_prefix='/blog_post')  # handles all req
 if __name__ == '__main__':
     """ Runs the web server """
 
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

@@ -1,6 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from blog.blueprints.data_storage.blog_data import add_blog_post, delete_blog_post, \
-    update_blog_post, fetch_post_by_id
+from blog.blueprints.data_storage.blog_data import add_blog_post, delete_blog_post, update_blog_post, fetch_post_by_id
 
 # Initialize the Blueprint Object
 blog_post_bp = Blueprint('blog_posts', __name__, static_folder='static',
@@ -12,11 +11,15 @@ blog_post_bp = Blueprint('blog_posts', __name__, static_folder='static',
 def add():
     """ Adds new blog post to the JSON file"""
 
-    # If request method is POST, add new post to JSON file
+    # Handles the request, if request method is POST
     if request.method == 'POST':
+
+        # Gets the data from input values of the form
         author = request.form.get('author')
         title = request.form.get('title')
         content = request.form.get('content')
+
+        # Add blog post
         add_blog_post(author=author, title=title, content=content)
 
         # Redirect back to index
