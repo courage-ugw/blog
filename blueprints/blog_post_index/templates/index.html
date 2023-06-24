@@ -33,6 +33,12 @@
         <a href="blog_post/delete/{{ post.id }}"
            class="rounded-button"><i>delete post</i></a>
         <a href="blog_post/update/{{ post.id }}" class="rounded-button"><i>update post</i></a>
+
+        <a class="like-button" href="blog_post/post_likes/{{ post.id }}">
+          <span class="like-icon"></span>
+          <span class="like-count">{{ post.like }}</span>
+        </a>
+
     </div>
     {% endfor %}
     {% endblock %}

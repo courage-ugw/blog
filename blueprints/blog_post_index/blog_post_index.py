@@ -13,3 +13,4 @@ def index():
 
     blog_posts = load_data()  # loads all blog posts
     return render_template('index.html', posts=blog_posts)  # renders the index page
+

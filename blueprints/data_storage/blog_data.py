@@ -9,11 +9,14 @@ INITIAL_BLOG_POSTS = [
     {'id': 1,
      'author': 'John Doe',
      'title': 'First Post',
-     'content': 'This is my first post.'},
+     'content': 'This is my first post.',
+     'like': 0},
+
     {'id': 2,
      'author': 'Jane Doe',
      'title': 'Second Post',
-     'content': 'This is another post.'},
+     'content': 'This is another post.',
+     'like': 0},
     # More blog posts can go here...
 ]
 
@@ -59,7 +62,8 @@ def add_blog_post(author, title, content):
         'id': uuid4().int,
         'author': author,
         'title': title,
-        'content': content})
+        'content': content,
+        'like': 0})
 
     # Save blog post to JSON file
     save_data(blog_posts)
@@ -119,3 +123,18 @@ def fetch_post_by_id(post_id):
     for blog_post in blog_posts:
         if blog_post['id'] == post_id:
             return blog_post
+
+
+def update_like_count(post_id, new_like_count):
+    """ Updates like count of a blog post """
+
+    # Load all blog posts from JSON file
+    blog_posts = load_data()
+
+    # Update like count of a post
+    for blog_post in blog_posts:
+        if blog_post['id'] == post_id:
+            blog_post['like'] = new_like_count
+
+    # Save blog post to JSON file
+    save_data(blog_posts)
