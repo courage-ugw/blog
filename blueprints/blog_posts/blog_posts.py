@@ -1,11 +1,13 @@
-from flask import Blueprint, render_template, request, redirect, url_for, session, jsonify
-from blog.blueprints.data_storage.blog_data import add_blog_post, delete_blog_post, update_blog_post, \
-    fetch_post_by_id, update_like_count
+from flask import Blueprint, render_template, request, redirect, url_for
+from blog.data_storage.blog_data import BlogData
 
 # Initialize the Blueprint Object
 blog_post_bp = Blueprint('blog_posts', __name__, static_folder='static',
                          static_url_path='blog_posts.static',
                          template_folder='templates')
+
+# Initialize the Blog Data Object
+blog_data = BlogData()
 
 
 @blog_post_bp.route('/add', methods=['GET', 'POST'])
@@ -20,7 +22,7 @@ def add():
         content = request.form.get('content')
 
         # Add blog post
-        add_blog_post(author=author, title=title, content=content)
+        blog_data.add_blog_post(author=author, title=title, content=content)
 
         # Redirect back to index
         return redirect(url_for('blog_post_index.index'))
@@ -34,7 +36,7 @@ def delete(post_id):
     """ Delete blog post from the JSON file using id"""
 
     # Delete post
-    delete_blog_post(post_id)
+    blog_data.delete_blog_post(post_id)
 
     # Redirect back to index
     return redirect(url_for('blog_post_index.index'))
@@ -45,7 +47,7 @@ def update(post_id):
     """ Updates existing blog post in the JSON file"""
 
     # Fetch the blog posts from the JSON file
-    post = fetch_post_by_id(post_id)
+    post = blog_data.fetch_post_by_id(post_id)
     if post is None:
         # Post not found
         return "Post not found", 404
@@ -55,7 +57,7 @@ def update(post_id):
         author = request.form.get('author')
         title = request.form.get('title')
         content = request.form.get('content')
-        update_blog_post(post_id=post_id, author=author, title=title, content=content)
+        blog_data.update_blog_post(post_id=post_id, author=author, title=title, content=content)
 
         # Redirect back to index
         return redirect(url_for('blog_post_index.index'))
@@ -70,13 +72,13 @@ def post_likes(post_id):
     """  Handles the like button click. Increment like count  """
 
     # Fetch the blog posts from the JSON file
-    post = fetch_post_by_id(post_id)
+    post = blog_data.fetch_post_by_id(post_id)
 
     # Gets the like count and increment by 1
     new_like_count = post.get('like') + 1
 
     # update the like count
-    update_like_count(post_id, new_like_count)
+    blog_data.update_like_count(post_id, new_like_count)
 
     # Redirect back to index
     return redirect(url_for('blog_post_index.index'))

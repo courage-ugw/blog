@@ -1,6 +1,6 @@
 from flask import Flask
-from blueprints.blog_post_index.blog_post_index import blog_post_index_bp
-from blueprints.blog_posts.blog_posts import blog_post_bp
+from blog.blueprints.blog_post_index.blog_post_index import blog_post_index_bp
+from blog.blueprints.blog_posts.blog_posts import blog_post_bp
 
 # Initialize Flask
 app = Flask(__name__)
